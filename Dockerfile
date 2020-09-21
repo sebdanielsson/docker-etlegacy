@@ -4,9 +4,6 @@ FROM debian:stable-slim
 # maintainer
 LABEL maintainer "Sebastian Danielsson <sebastian.danielsson@protonmail.com>"
 
-# create volumes to load config files from host and save downloaded files to host
-VOLUME ["/etlegacy/etmain"]
-
 # open the server port
 EXPOSE 27960/udp
 
@@ -23,6 +20,9 @@ RUN curl https://www.etlegacy.com/download/file/121 | tar xvz; mv etlegacy-v2.76
 # do some basic config
 RUN echo "set sv_allowDownload \"1\"" >> etlegacy/etmain/etl_server.cfg  && \
     echo "set rconpassword \"etlegacy\"" >> etlegacy/etmain/etl_server.cfg
+    
+# create volumes to load config files from host and save downloaded files to host
+VOLUME ["/etlegacy/etmain"]
 
 # start the server
 USER root
