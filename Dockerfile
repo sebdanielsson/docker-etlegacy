@@ -24,5 +24,5 @@ RUN apt update && apt install -y \
      echo "set rconpassword \"etlegacy\"" >> etlegacy/etmain/etl_server.cfg
 
 # start the server
-RUN cd /etlegacy
+WORKDIR /etlegacy
 ENTRYPOINT ./etlded_bot.sh
