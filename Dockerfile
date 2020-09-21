@@ -20,11 +20,11 @@ RUN curl https://www.etlegacy.com/download/file/121 | tar xvz; mv etlegacy-v2.76
 # do some basic config
 RUN echo "set sv_allowDownload \"1\"" >> etlegacy/etmain/etl_server.cfg  && \
     echo "set rconpassword \"etlegacy\"" >> etlegacy/etmain/etl_server.cfg
-    
+
+WORKDIR /etlegacy
+
 # create volumes to load config files from host and save downloaded files to host
-VOLUME ["/etlegacy/etmain"]
+VOLUME ["/etmain"]
 
 # start the server
-USER root
-WORKDIR /etlegacy
 ENTRYPOINT ./etlded_bot.sh
