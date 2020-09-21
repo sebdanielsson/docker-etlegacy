@@ -4,6 +4,12 @@ FROM debian:stable-slim
 # maintainer
 LABEL maintainer "Sebastian Danielsson <sebastian.danielsson@protonmail.com>"
 
+# create volumes to load config files from host and save downloaded files to host
+VOLUME ["/etlegacy/etmain"]
+
+# open the server port
+EXPOSE 27960/udp
+
 # install required tools and clear apt cache
 RUN apt update && apt install -y \
   p7zip-full \
@@ -17,11 +23,6 @@ RUN apt update && apt install -y \
      echo "set sv_dl_maxRate \"1048576\"" >> etlegacy/etmain/etl_server.cfg  && \
      echo "set rconpassword \"etlegacy\"" >> etlegacy/etmain/etl_server.cfg
 
-# create volumes to load config files from host and save downloaded files to host
-VOLUME ["/etlegacy/etmain"]
-
-# open the server port
-EXPOSE 27960/udp
-
 # start the server
-ENTRYPOINT /etlegacy/etlded_bot.sh
+RUN cd /etlegacy
+ENTRYPOINT ./etlded_bot.sh
