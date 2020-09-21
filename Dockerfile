@@ -25,5 +25,6 @@ RUN echo "set sv_allowDownload \"1\"" >> etlegacy/etmain/etl_server.cfg  && \
     echo "set rconpassword \"etlegacy\"" >> etlegacy/etmain/etl_server.cfg
 
 # start the server
+USER root
 WORKDIR /etlegacy
 ENTRYPOINT ./etlded_bot.sh
