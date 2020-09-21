@@ -7,6 +7,7 @@ Docker image for running a ET: Legacy dedicated server.
 ## Usage
 - Default rcon password is etlegacy.
 - Server config files mounts to ./data. Most options is changed in etl_server.cfg. 
+- 
 
 ### docker run
 ```
@@ -31,7 +32,7 @@ services:
 ```
 
 ## To-Do
--
+- More detailed readme & add link to config documentation.
 
 ## Contribute
 All contributions are appreciated
