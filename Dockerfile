@@ -22,7 +22,7 @@ RUN echo "set sv_allowDownload \"1\"" >> etlegacy/etmain/etl_server.cfg  && \
 EXPOSE 27960/udp
 
 # create volumes to load config files from host and save downloaded files to host
-VOLUME ["/etlegacy/etmain"]
+VOLUME ["/etlegacy"]
 
 # start the server
 WORKDIR /etlegacy
