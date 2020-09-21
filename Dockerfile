@@ -24,4 +24,4 @@ VOLUME ["/etlegacy/etmain"]
 EXPOSE 27960/udp
 
 # start the server
-ENTRYPOINT .etlegacy/etlded_bot.sh
+ENTRYPOINT /etlegacy/etlded_bot.sh
