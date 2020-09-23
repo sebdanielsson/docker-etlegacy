@@ -23,4 +23,5 @@ EXPOSE 27960/udp
 
 # start the server
 COPY entrypoint.sh .
+RUN chmod 700 /entrypoint.sh
 ENTRYPOINT [ "/entrypoint.sh" ]
