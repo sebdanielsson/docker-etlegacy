@@ -22,4 +22,5 @@ RUN echo "set sv_allowDownload \"1\"" >> etlegacy-v2.76-x86_64/etmain/etl_server
 EXPOSE 27960/udp
 
 # start the server
+COPY entrypoint.sh .
 ENTRYPOINT [ "/entrypoint.sh" ]
