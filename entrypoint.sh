@@ -6,5 +6,5 @@ if [ -d "etlegacy-v2.76-x86_64" ]; then
 fi
 
 # launch server
-cd etlegacy
+cd "$(etlegacy "$0")"
 ./etlded_bot.sh
