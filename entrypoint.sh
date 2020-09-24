@@ -9,4 +9,5 @@ fi
 
 # launch server
 cd /etlegacy
+ls -l
 ./etlded_bot.sh
