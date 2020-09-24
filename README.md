@@ -2,11 +2,11 @@
 Docker image for running a ET: Legacy dedicated server.
 
 ## Changelog
--
+**2020-09-25:** First release
 
 ## Usage
-- Default rcon password is etlegacy.
-- Server config files mounts to ./data. Most options is changed in etl_server.cfg.
+Server config can be changed in **etl_server.cfg** and **legacy.cfg** which is mounted to ./data after first run.
+The documentation for ET: Legacy isn't great but they have a [wiki](https://github.com/etlegacy/etlegacy/wiki) on their [GitHub](https://github.com/etlegacy/etlegacy) and [documentation for some variables](https://github.com/etlegacy/etlegacy/wiki/Set-up-Features#server).
 
 ### docker run
 ```
@@ -31,7 +31,7 @@ services:
 ```
 
 ## To-Do
-- More detailed readme & add link to config documentation.
+- Feel free to suggest improvements
 
 ## Contribute
 All contributions are appreciated
