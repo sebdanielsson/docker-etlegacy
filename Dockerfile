@@ -23,6 +23,6 @@ EXPOSE 27960/udp
 
 # start the server
 WORKDIR /etlegacy
-COPY ./entrypoint.sh .
+COPY ./entrypoint.sh ./entrypoint.sh
 RUN chmod 700 entrypoint.sh
 ENTRYPOINT ./entrypoint.sh
