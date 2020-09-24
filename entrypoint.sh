@@ -3,6 +3,8 @@
 # move server files into shared folder that the host can access
 if [ -d "/etlegacy-v2.76-x86_64" ];
   then
+    cp /etlegacy-v2.76-x86_64/etmain/* /etlegacy/etmain/
+    rm -R /etlegacy-v2.76-x86_64/etmain/
     mv -v /etlegacy-v2.76-x86_64/* /etlegacy/
     rm -R /etlegacy-v2.76-x86_64
 fi
