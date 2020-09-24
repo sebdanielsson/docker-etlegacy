@@ -6,6 +6,7 @@ if [ -d "etlegacy-v2.76-x86_64" ]; then
 fi
 
 # launch server
-cd etlegacy
+cd /etlegacy
 chmod 700 etlded_bot.sh
+echo "Trying to exec etlded_bot.sh, let's see where it breaks"
 etlded_bot.sh
