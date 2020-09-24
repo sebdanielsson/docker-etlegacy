@@ -8,5 +8,6 @@ if [ -d "etlegacy-v2.76-x86_64" ];
 fi
 
 # launch server
-ls -l
-./etlded_bot.sh
+ls -l /
+ls -l /etlegacy
+exec ./etlded_bot.sh
