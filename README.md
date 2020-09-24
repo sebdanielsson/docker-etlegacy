@@ -2,7 +2,7 @@
 Docker image for running a ET: Legacy dedicated server.
 
 ## Changelog
-**2020-09-25:** First release
+**2020-09-25:** First release.
 
 ## Usage
 Server config can be changed in **etl_server.cfg** and **legacy.cfg** which is mounted to ./data after first run.
@@ -31,10 +31,10 @@ services:
 ```
 
 ## To-Do
-- Feel free to suggest improvements
+Feel free to suggest improvements.
 
 ## Contribute
-All contributions are appreciated
+All contributions are appreciated.
 
 ## License
 MIT
