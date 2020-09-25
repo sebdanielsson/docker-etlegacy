@@ -1,6 +1,18 @@
 # docker-etlegacy
 Docker image for running a ET: Legacy dedicated server.
 
+[![GitHub](https://img.shields.io/badge/GitHub-etlegacy-blue?style=flat&logo=github)](https://github.com/SebDanielsson/docker-etlegacy)
+[![GitHub stars](https://img.shields.io/github/stars/SebDanielsson/docker-etlegacy?style=flat&logo=github)](https://github.com/SebDanielsson/docker-etlegacy/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/SebDanielsson/docker-etlegacy?style=flat&logo=github)](https://github.com/SebDanielsson/docker-etlegacy/network)
+[![GitHub issues](https://img.shields.io/github/issues/SebDanielsson/docker-etlegacy?style=flat&logo=github)](https://github.com/SebDanielsson/docker-etlegacy/issues)
+[![GitHub license](https://img.shields.io/github/license/SebDanielsson/docker-etlegacy?style=flat&logo=github)](https://github.com/SebDanielsson/docker-etlegacy/blob/master/LICENSE)
+
+
+[![Docker](https://img.shields.io/badge/Docker-etlegacy-blue?style=flat&logo=docker)](https://github.com/SebDanielsson/docker-etlegacy)
+![Docker Pulls](https://img.shields.io/docker/pulls/sebdanielsson/etlegacy?logo=docker)
+![Docker Stars](https://img.shields.io/docker/stars/sebdanielsson/etlegacy?&style=flat&label=stars&logo=docker)
+![Docker Cloud Build Status](https://img.shields.io/docker/cloud/build/sebdanielsson/etlegacy?style=flat&logo=docker)
+
 ## Changelog
 **2020-09-25:** First release.
 
