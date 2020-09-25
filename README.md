@@ -11,7 +11,7 @@ Docker image for running a ET: Legacy dedicated server.
 [![Docker](https://img.shields.io/badge/Docker-etlegacy-blue?style=flat&logo=docker)](https://github.com/SebDanielsson/docker-etlegacy)
 ![Docker Pulls](https://img.shields.io/docker/pulls/sebdanielsson/etlegacy?logo=docker)
 ![Docker Stars](https://img.shields.io/docker/stars/sebdanielsson/etlegacy?&style=flat&label=stars&logo=docker)
-![Docker Cloud Build Status](https://img.shields.io/docker/cloud/build/sebdanielsson/etlegacy?style=flat&logo=docker)
+![Docker Cloud Automated build](https://img.shields.io/docker/cloud/automated/sebdanielsson/etlegacy?logo=docker)
 
 ## Changelog
 **2020-09-25:** First release.
