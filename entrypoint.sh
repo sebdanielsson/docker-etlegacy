@@ -5,7 +5,7 @@ if [ -d "/etlegacy-v2.76-x86_64" ];
   then
     cp -n /etlegacy-v2.76-x86_64/etmain/* /etlegacy/etmain/
     rm -R /etlegacy-v2.76-x86_64/etmain/
-    mv -v /etlegacy-v2.76-x86_64/* /etlegacy/
+    mv /etlegacy-v2.76-x86_64/* /etlegacy/
     rm -R /etlegacy-v2.76-x86_64
 fi
 
