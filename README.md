@@ -42,6 +42,8 @@ services:
 ```
 
 ## To-Do
+- [ ] Add multi arch support once Docker Hub automated builds supports it properly
+
 Feel free to suggest improvements.
 
 ## Contribute
