@@ -29,7 +29,7 @@ sebdanielsson/etlegacy
 
 ### docker-compose.yml
 ```
-version: '3.3'
+version: '3.7'
 services:
     etlegacy:
         container_name: etlegacy
