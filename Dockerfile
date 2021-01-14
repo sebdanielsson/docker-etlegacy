@@ -16,9 +16,9 @@ RUN echo "set sv_allowDownload \"1\"" >> etlegacy-v2.76-x86_64/etmain/etl_server
 EXPOSE 27960/udp
 
 RUN mkdir /etlegacy
-VOLUME /etlegacy
 
 WORKDIR /etlegacy
 COPY ./entrypoint.sh ./entrypoint.sh
 RUN chmod 700 ./entrypoint.sh
+VOLUME /etlegacy
 ENTRYPOINT ./entrypoint.sh
