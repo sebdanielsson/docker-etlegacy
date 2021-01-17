@@ -23,7 +23,7 @@ The documentation for ET: Legacy isn't great but they have a [wiki](https://gith
 ```
 docker run --name etlegacy \
 -p 27960:27960/udp \
--v ./data:/etlegacy/etmain \
+-v ./data:/etlegacy/etl_homepath \
 sebdanielsson/etlegacy
 ```
 
@@ -37,13 +37,11 @@ services:
         ports:
             - '27960:27960/udp'
         volumes:
-            - './data:/etlegacy/etmain'
+            - './data:/etlegacy/etl_homepath'
         restart: unless-stopped
 ```
 
 ## To-Do
-- [ ] Add multi arch support once Docker Hub automated builds supports it properly
-
 Feel free to suggest improvements.
 
 ## Donate
