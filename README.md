@@ -13,10 +13,16 @@ Docker image for running a ET: Legacy dedicated server.
 ![Docker Cloud Automated build](https://img.shields.io/docker/cloud/automated/sebdanielsson/etlegacy?style=flat&color=blue&logo=docker&label=build)
 
 ## Changelog
+**2021-01-17:** Second release.
+
+This is a breaking release that might break your server. Backup all config files before updating and then make a clean install.
+* More clean way of starting the server without need for entrypoint.sh.
+* Added etl_homepath volume where etlegacy will look for config files.
+
 **2020-09-25:** First release.
 
 ## Usage
-Server config can be changed in **etl_server.cfg** and **legacy.cfg** which is mounted to ./data after first run.
+Add your config files to ./data which is a bind mount to the etl_homepath volume. For example etl_server.cfg, legacy.cfg and map rotations.
 The documentation for ET: Legacy isn't great but they have a [wiki](https://github.com/etlegacy/etlegacy/wiki) on their [GitHub](https://github.com/etlegacy/etlegacy) and [documentation for some variables](https://github.com/etlegacy/etlegacy/wiki/Set-up-Features#server).
 
 ### docker run
