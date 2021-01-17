@@ -18,4 +18,4 @@ WORKDIR /etlegacy
 
 USER etlegacy
 
-ENTRYPOINT ["./etlded", "+set", "g_protect", "1", "+exec", "/etl_server.cfg"]
+ENTRYPOINT ["./etlded", "+set", "g_protect", "1", "+exec", "etl_server.cfg"]
