@@ -1,0 +1,11 @@
+version: '3.8'
+services:
+  etlegacy:
+    image: sebdanielsson/etlegacy
+    container_name: etlegacy
+    ports:
+      - '27960:27960/udp'
+    volumes:
+      - './data/etl_server.cfg:/etlegacy/etmain/etl_server.cfg'
+      - './data/mapvotecycle.cfg:/etlegacy/etmain/mapvotecycle.cfg'
+    restart: unless-stopped
