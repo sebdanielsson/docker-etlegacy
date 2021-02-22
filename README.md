@@ -13,6 +13,9 @@ Docker image for running a ET: Legacy dedicated server.
 ![Docker Cloud Automated build](https://img.shields.io/docker/cloud/automated/sebdanielsson/etlegacy?style=flat&color=blue&logo=docker&label=build)
 
 ## Changelog
+**2021-03-01:** Third release.
+Bump ET: Legacy to version 2.77.
+
 **2021-01-17:** Second release.
 
 This is a breaking release that might break your server. Backup all config files before updating and then make a clean install.
@@ -22,6 +25,9 @@ This is a breaking release that might break your server. Backup all config files
 
 ## Usage
 The documentation for ET: Legacy isn't great but they have a [wiki](https://github.com/etlegacy/etlegacy/wiki) on their [GitHub](https://github.com/etlegacy/etlegacy) and [documentation for some variables](https://github.com/etlegacy/etlegacy/wiki/Set-up-Features#server).
+
+### etl_server.cfg.sample
+Download etl_server.cfg and mapvotecycle.cfg to ./data and make the changes that you want before starting the container.
 
 ### docker run
 ```
@@ -33,16 +39,17 @@ sebdanielsson/etlegacy
 
 ### docker-compose.yml
 ```
-version: '3.7'
+version: '3.8'
 services:
-    etlegacy:
-        container_name: etlegacy
-        image: sebdanielsson/etlegacy
-        ports:
-            - '27960:27960/udp'
-        volumes:
-            - './data/etl_server.cfg:/etlegacy/etmain/etl_server.cfg'
-        restart: unless-stopped
+  etlegacy:
+    image: sebdanielsson/etlegacy
+    container_name: etlegacy
+    ports:
+      - '27960:27960/udp'
+    volumes:
+      - './data/etl_server.cfg:/etlegacy/etmain/etl_server.cfg'
+      - './data/mapvotecycle.cfg:/etlegacy/etmain/mapvotecycle.cfg'
+    restart: unless-stopped
 ```
 
 ## To-Do
