@@ -1,5 +1,5 @@
 # docker-etlegacy
-Docker image for running a ET: Legacy dedicated server.
+Docker image for running a ET: Legacy 64-bit dedicated server.
 
 [![GitHub](https://img.shields.io/badge/github-blue?style=flat&color=grey&logo=github)](https://github.com/SebDanielsson/docker-etlegacy)
 [![GitHub stars](https://img.shields.io/github/stars/SebDanielsson/docker-etlegacy?style=flat&color=blue&logo=github)](https://github.com/SebDanielsson/docker-etlegacy/stargazers)
@@ -14,7 +14,10 @@ Docker image for running a ET: Legacy dedicated server.
 
 ## Changelog
 **2021-03-01:** Third release.
-Bump ET: Legacy to version 2.77.
+Bump ET: Legacy to version 2.77
+Change website for .pk3 download to official Splash Damage website.
+Added a Docker Volume for /etlegacy
+Moved the launch options from entrypoint to CMD to the user can ocerride them with their own launch options. 
 
 **2021-01-17:** Second release.
 
@@ -53,7 +56,8 @@ services:
 ```
 
 ## To-Do
-Feel free to suggest improvements.
+* Make a 32-bit option
+* Feel free to suggest improvements.
 
 ## Donate
 <a href="https://buymeacoffee.com/danielsson" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/white_img.png" alt="Buy Me A Coffee" style="height: 41px !important;width: 174px !important;box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;" ></a>
