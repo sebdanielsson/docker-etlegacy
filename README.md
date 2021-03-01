@@ -13,11 +13,11 @@ Docker image for running a ET: Legacy 64-bit dedicated server.
 ![Docker Cloud Automated build](https://img.shields.io/docker/cloud/automated/sebdanielsson/etlegacy?style=flat&color=blue&logo=docker&label=build)
 
 ## Changelog
-**2021-03-01:** Third release.
-Bump ET: Legacy to version 2.77
-Change website for .pk3 download to official Splash Damage website.
-Added a Docker Volume for /etlegacy
-Moved the launch options from entrypoint to CMD to the user can ocerride them with their own launch options. 
+**2021-03-01:** ET: Legacy 2.77 is here!
+* Bump ET: Legacy to version 2.77
+* Change website for .pk3 download to official Splash Damage website.
+* Added a Docker Volume for /etlegacy
+* Moved the launch options from entrypoint to CMD so the user can override them with their own launch options.
 
 **2021-01-17:** Second release.
 
