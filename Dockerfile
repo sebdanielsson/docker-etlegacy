@@ -7,7 +7,7 @@ RUN apt update && apt install -y \
     curl \
     && rm -rf /var/lib/apt/lists/*
 
-RUN curl https://www.etlegacy.com/download/file/234 | tar xvz; mv etlegacy-*/ /etlegacy; \
+RUN curl https://www.etlegacy.com/download/file/234 | tar xvz; mv etlegacy-*/ /etlegacy; rm *.tar.gz \
     curl -o temp.exe https://cdn.splashdamage.com/downloads/games/wet/WolfET_2_60b_custom.exe; 7z e temp.exe -oetlegacy/etmain etmain/pak*.pk3; rm temp.exe
 
 RUN useradd -Ms /bin/bash etlegacy; chown -R etlegacy:etlegacy /etlegacy
