@@ -15,7 +15,7 @@ Docker image for running a ET: Legacy 64-bit dedicated server.
 ## Changelog
 **2021-03-18:** ET: Legacy 2.77.1 is here!
 * Bump ET: Legacy to version 2.77.1
-* 
+
 **2021-03-01:** ET: Legacy 2.77 is here!
 * Bump ET: Legacy to version 2.77
 * Change website for .pk3 download to official Splash Damage website.
