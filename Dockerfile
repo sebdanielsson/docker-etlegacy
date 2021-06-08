@@ -1,4 +1,4 @@
-FROM debian:stable-slim
+FROM debian:testing-slim
 
 LABEL maintainer "Sebastian Danielsson <sebastian.danielsson@protonmail.com>"
 
