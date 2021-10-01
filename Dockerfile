@@ -1,4 +1,4 @@
-FROM debian:testing-slim
+FROM debian:bullseye-slim
 
 LABEL maintainer "Sebastian Danielsson <sebastian.danielsson@protonmail.com>"
 
@@ -6,7 +6,7 @@ RUN apt update && apt install -y \
     curl \
     && rm -rf /var/lib/apt/lists/*
 
-RUN curl https://www.etlegacy.com/download/file/254 | tar xvz; mv etlegacy-*/ /etlegacy; \
+RUN curl https://www.etlegacy.com/download/file/316 | tar xvz; mv etlegacy-*/ /etlegacy; \
     curl -O --output-dir etlegacy/etmain "https://mirror.etlegacy.com/etmain/pak[0-2].pk3"
 
 RUN useradd -Ms /bin/bash etlegacy; chown -R etlegacy:etlegacy /etlegacy
