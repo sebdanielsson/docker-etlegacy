@@ -13,8 +13,9 @@ Docker image for running a ET: Legacy 64-bit dedicated server.
 
 ## Changelog
 **2021-10-01:** ET: Legacy 2.78.0 is here!
-* Bump ET: Legacy to version 2.78.0
+* Bump ET: Legacy to version 2.78.0.
 * Upgrade base image to Debian Bullseye.
+* New installation method.
 
 **2021-03-18:** ET: Legacy 2.77.1 is here!
 * Bump ET: Legacy to version 2.77.1
@@ -35,16 +36,15 @@ This is a breaking release that might break your server. Backup all config files
 ## Usage
 Documentation for some of the commands are available at the projects [wiki](https://github.com/etlegacy/etlegacy/wiki/Set-up-Features#server).
 
-### Sample config
-Download etl_server.cfg and mapvotecycle.cfg to ./data and make the changes that you want before starting the container.
+### Sample config and pak-files
+1. Download three pak-files that's required to run ET: Legacy. Put them in ./data/etmain. If standing in the same folder as your compose.yaml, run this one-liner: `curl -O --output-dir ./data/etmain "https://mirror.etlegacy.com/etmain/pak[0-2].pk3"`
+2. Download etl_server.cfg and mapvotecycle.cfg to ./data/etmain and make the changes that you want before starting the container.
 
 ### docker run
 ```
 docker run --name etlegacy \
 -p 27960:27960/udp \
--v etlegacy:/etlegacy \
--v ./data/etl_server.cfg:/etlegacy/etmain/etl_server.cfg \
--v ./data/mapvotecycle.cfg:/etlegacy/etmain/mapvotecycle.cfg \
+-v ./data/etmain:/etlegacy/etmain \
 sebdanielsson/etlegacy:latest
 ```
 
@@ -57,14 +57,8 @@ services:
     ports:
       - '27960:27960/udp'
     volumes:
-      - 'etlegacy:/etlegacy'
-      - './data/etl_server.cfg:/etlegacy/etmain/etl_server.cfg'
-      - './data/mapvotecycle.cfg:/etlegacy/etmain/mapvotecycle.cfg'
+      - './data/etmain:/etlegacy/etmain'
     restart: unless-stopped
-volumes:
-  etlegacy:
-    external:
-      name: etlegacy
 ```
 
 ## Donate
