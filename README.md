@@ -10,9 +10,12 @@ Docker image for running a ET: Legacy 64-bit dedicated server.
 [![Docker](https://img.shields.io/badge/docker-blue?style=flat&color=grey&logo=docker)](https://hub.docker.com/r/sebdanielsson/etlegacy)
 ![Docker Stars](https://img.shields.io/docker/stars/sebdanielsson/etlegacy?style=flat&color=blue&logo=docker&label=stars)
 ![Docker Pulls](https://img.shields.io/docker/pulls/sebdanielsson/etlegacy?style=flat&color=blue&logo=docker&label=pulls)
-![Docker Cloud Automated build](https://img.shields.io/docker/cloud/automated/sebdanielsson/etlegacy?style=flat&color=blue&logo=docker&label=build)
 
 ## Changelog
+**2021-10-01:** ET: Legacy 2.78.0 is here!
+* Bump ET: Legacy to version 2.78.0
+* Upgrade base image to Debian Bullseye.
+
 **2021-03-18:** ET: Legacy 2.77.1 is here!
 * Bump ET: Legacy to version 2.77.1
 
@@ -39,28 +42,30 @@ Download etl_server.cfg and mapvotecycle.cfg to ./data and make the changes that
 ```
 docker run --name etlegacy \
 -p 27960:27960/udp \
+-v etlegacy:/etlegacy \
 -v ./data/etl_server.cfg:/etlegacy/etmain/etl_server.cfg \
-sebdanielsson/etlegacy
+-v ./data/mapvotecycle.cfg:/etlegacy/etmain/mapvotecycle.cfg \
+sebdanielsson/etlegacy:latest
 ```
 
-### docker-compose.yml
+### compose.yaml
 ```
-version: '3.8'
 services:
   etlegacy:
-    image: sebdanielsson/etlegacy
+    image: 'sebdanielsson/etlegacy:latest'
     container_name: etlegacy
     ports:
       - '27960:27960/udp'
     volumes:
+      - 'etlegacy:/etlegacy'
       - './data/etl_server.cfg:/etlegacy/etmain/etl_server.cfg'
       - './data/mapvotecycle.cfg:/etlegacy/etmain/mapvotecycle.cfg'
     restart: unless-stopped
+volumes:
+  etlegacy:
+    external:
+      name: etlegacy
 ```
-
-## To-Do
-* Make a 32-bit option
-* Feel free to suggest improvements.
 
 ## Donate
 <a href="https://buymeacoffee.com/danielsson" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/white_img.png" alt="Buy Me A Coffee" style="height: 41px !important;width: 174px !important;box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;" ></a>
