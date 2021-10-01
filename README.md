@@ -33,7 +33,7 @@ This is a breaking release that might break your server. Backup all config files
 **2020-09-25:** First release.
 
 ## Usage
-Documentation for some of the commands are available at the projects [wiki](https://github.com/etlegacy/etlegacy/wiki/Set-up-Features#server) on their [GitHub](https://github.com/etlegacy/etlegacy).
+Documentation for some of the commands are available at the projects [wiki](https://github.com/etlegacy/etlegacy/wiki/Set-up-Features#server).
 
 ### Sample config
 Download etl_server.cfg and mapvotecycle.cfg to ./data and make the changes that you want before starting the container.
