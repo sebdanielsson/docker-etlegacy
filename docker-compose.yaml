@@ -1,7 +1,7 @@
-version: '3.8'
 services:
   etlegacy:
-    image: sebdanielsson/etlegacy
+    command: '+set fs_game legacy +set fs_homepath etmain +set g_protect 1 +exec etl_server.cfg'
+    image: sebdanielsson/etlegacy:latest
     container_name: etlegacy
     ports:
       - '27960:27960/udp'
