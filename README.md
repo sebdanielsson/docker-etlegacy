@@ -12,6 +12,10 @@ Docker image for running a ET: Legacy 64-bit dedicated server.
 ![Docker Pulls](https://img.shields.io/docker/pulls/sebdanielsson/etlegacy?style=flat&color=blue&logo=docker&label=pulls)
 
 ## Changelog
+**2021-11-03:** ET: Legacy 2.78.1 is here!
+* Bump ET: Legacy to version 2.78.1.
+* Update docker-compose.yaml to follow the latest compose spec.
+
 **2021-10-01:** ET: Legacy 2.78.0 is here!
 * Bump ET: Legacy to version 2.78.0.
 * Upgrade base image to Debian Bullseye.
@@ -44,7 +48,8 @@ Documentation for some of the commands are available at the projects [wiki](http
 ```
 docker run --name etlegacy \
 -p 27960:27960/udp \
--v ./data/etmain:/etlegacy/etmain \
+-v ./data/etl_server.cfg:/etlegacy/etmain/etl_server.cfg \
+-v ./data/mapvotecycle.cfg:/etlegacy/etmain/mapvotecycle.cfg \
 sebdanielsson/etlegacy:latest
 ```
 
@@ -52,12 +57,14 @@ sebdanielsson/etlegacy:latest
 ```
 services:
   etlegacy:
-    image: 'sebdanielsson/etlegacy:latest'
+    command: '+set fs_game legacy +set fs_homepath etmain +set g_protect 1 +exec etl_server.cfg'
+    image: sebdanielsson/etlegacy:latest
     container_name: etlegacy
     ports:
       - '27960:27960/udp'
     volumes:
-      - './data/etmain:/etlegacy/etmain'
+      - './data/etl_server.cfg:/etlegacy/etmain/etl_server.cfg'
+      - './data/mapvotecycle.cfg:/etlegacy/etmain/mapvotecycle.cfg'
     restart: unless-stopped
 ```
 
