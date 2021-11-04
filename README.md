@@ -48,8 +48,7 @@ Documentation for some of the commands are available at the projects [wiki](http
 ```
 docker run --name etlegacy \
 -p 27960:27960/udp \
--v ./data/etl_server.cfg:/etlegacy/etmain/etl_server.cfg \
--v ./data/mapvotecycle.cfg:/etlegacy/etmain/mapvotecycle.cfg \
+-v ./data/etmain:/etlegacy/etmain \
 sebdanielsson/etlegacy:latest
 ```
 
@@ -63,8 +62,7 @@ services:
     ports:
       - '27960:27960/udp'
     volumes:
-      - './data/etl_server.cfg:/etlegacy/etmain/etl_server.cfg'
-      - './data/mapvotecycle.cfg:/etlegacy/etmain/mapvotecycle.cfg'
+      - './data/etmain:/etlegacy/etmain'
     restart: unless-stopped
 ```
 
