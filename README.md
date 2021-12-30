@@ -70,6 +70,29 @@ services:
     restart: unless-stopped
 ```
 
+## N!tmod
+The following instruction assumes that you're deploying with docker compose.
+
+1. Download nitmod.
+```
+mkdir data/nitmod
+```
+```
+curl http://etmods.net/downloads/nitmod_2.3.4-b4.zip -o nitmod_2.3.4-b4.zip && unzip -d data/nitmod nitmod_2.3.4-b4.zip nitmod_2.3.4_b4.pk3 qagame.mp.x86_64.so && rm nitmod_2.3.4-b4.zip
+```
+2. Add the following bind mount under volumes: in your `compose.yml` to make your nitmod directory accessible to the container:
+```
+- ./data/nitmod:/etlegacy/nitmod
+```
+3. Replace the launch options in your `compose.yaml` with:
+```
+command: +set fs_game nitmod +set fs_homepath /etlegacy +set g_protect 1 +exec nitmod.cfg
+```
+4. Add nitmod.cfg ***(Recommended)***, levels.db ***(Recommended)***, commands.db, votes.db
+Some documentation can be found on these websites:
+* [N!tmod - Installation (Unofficial)](https://nitmod-docusaurus.vercel.app/docs/installation)
+* [ETMods.net - Installation Tutorial (Official)](http://etmods.net/nitmod_install.php)
+
 ## Donate
 <a href="https://buymeacoffee.com/danielsson" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/white_img.png" alt="Buy Me A Coffee" style="height: 41px !important;width: 174px !important;box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;" ></a>
 
