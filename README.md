@@ -70,25 +70,25 @@ services:
     restart: unless-stopped
 ```
 
-## N!tmod
+## Nitmod
 The following instruction assumes that you're deploying with docker compose.
 
-1. Download nitmod.
+1. Download Nitmod
 ```
 mkdir data/nitmod
 ```
 ```
 curl http://etmods.net/downloads/nitmod_2.3.4-b4.zip -o nitmod_2.3.4-b4.zip && unzip -d data/nitmod nitmod_2.3.4-b4.zip nitmod_2.3.4_b4.pk3 qagame.mp.x86_64.so && rm nitmod_2.3.4-b4.zip
 ```
-2. Add the following bind mount under volumes: in your `compose.yml` to make your nitmod directory accessible to the container:
+2. Add the following bind mount under volumes: in your `compose.yml` to make your nitmod directory accessible to the container.
 ```
 - ./data/nitmod:/etlegacy/nitmod
 ```
-3. Replace the launch options in your `compose.yaml` with:
+3. Replace the launch options in your `compose.yaml`.
 ```
 command: +set fs_game nitmod +set fs_homepath /etlegacy +set g_protect 1 +exec nitmod.cfg
 ```
-4. Add nitmod.cfg ***(Recommended)***, levels.db ***(Recommended)***, commands.db, votes.db
+4. Add nitmod.cfg ***(Required)***, levels.db ***(Recommended)***, commands.db, votes.db
 Some documentation can be found on these websites:
 * [N!tmod - Installation (Unofficial)](https://nitmod-docusaurus.vercel.app/docs/installation)
 * [ETMods.net - Installation Tutorial (Official)](http://etmods.net/nitmod_install.php)
