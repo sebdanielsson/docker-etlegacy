@@ -1,11 +1,10 @@
 services:
   etlegacy:
-    command: '+set fs_game legacy +set fs_homepath etmain +set g_protect 1 +exec etl_server.cfg'
-    image: sebdanielsson/etlegacy:latest
     container_name: etlegacy
+    image: sebdanielsson/etlegacy:latest
+    command: +set fs_game legacy +set fs_homepath etmain +set g_protect 1 +exec etl_server.cfg
     ports:
-      - '27960:27960/udp'
+      - "27960:27960/udp"
     volumes:
-      - './data/etl_server.cfg:/etlegacy/etmain/etl_server.cfg'
-      - './data/mapvotecycle.cfg:/etlegacy/etmain/mapvotecycle.cfg'
+      - ./data/etmain:/etlegacy/etmain
     restart: unless-stopped
