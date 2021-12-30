@@ -12,6 +12,10 @@ Docker image for running a ET: Legacy 64-bit dedicated server.
 ![Docker Pulls](https://img.shields.io/docker/pulls/sebdanielsson/etlegacy?style=flat&color=blue&logo=docker&label=pulls)
 
 ## Changelog
+**2021-12-23:** ET: Legacy 2.79.0 is here!
+* Bump ET: Legacy to version 2.79.0.
+* Significantly reduced image size.
+
 **2021-11-03:** ET: Legacy 2.78.1 is here!
 * Bump ET: Legacy to version 2.78.1.
 * Update docker-compose.yaml to follow the latest compose spec.
