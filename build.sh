@@ -12,3 +12,6 @@ docker build -t sebdanielsson/etlegacy:latest .
 # Push
 docker push sebdanielsson/etlegacy:$IMAGE_VERSION
 docker push sebdanielsson/etlegacy:latest
+
+# Clean
+rm -Rf etlegacy-v
