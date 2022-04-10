@@ -8,7 +8,7 @@ RUN groupadd -r etlegacy && useradd -g etlegacy etlegacy
 
 USER etlegacy
 
-COPY --chown=etlegacy etlegacy-v2.79.0-x86_64 /etlegacy
+COPY --chown=etlegacy etlegacy-v* /etlegacy
 
 WORKDIR /etlegacy
 
