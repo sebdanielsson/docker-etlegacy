@@ -14,6 +14,10 @@ Docker image for running a ET: Legacy 64-bit dedicated server.
 
 ## Changelog
 
+**2022-04-23:** ET: Legacy 2.80.1 is here!
+
+* Bump ET: Legacy to version 2.80.1.
+
 **2022-04-10:** ET: Legacy 2.80.0 is here!
 
 * Bump ET: Legacy to version 2.80.0.
