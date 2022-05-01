@@ -14,49 +14,7 @@ Docker image for running a ET: Legacy 64-bit dedicated server.
 
 ## Changelog
 
-**2022-04-23:** ET: Legacy 2.80.1 is here!
-
-* Bump ET: Legacy to version 2.80.1.
-
-**2022-04-10:** ET: Legacy 2.80.0 is here!
-
-* Bump ET: Legacy to version 2.80.0.
-* Added build script.
-
-**2021-12-23:** ET: Legacy 2.79.0 is here!
-
-* Bump ET: Legacy to version 2.79.0.
-* Significantly reduced image size.
-
-**2021-11-03:** ET: Legacy 2.78.1 is here!
-
-* Bump ET: Legacy to version 2.78.1.
-* Update docker-compose.yaml to follow the latest compose spec.
-
-**2021-10-01:** ET: Legacy 2.78.0 is here!
-
-* Bump ET: Legacy to version 2.78.0.
-* Upgrade base image to Debian Bullseye.
-* New installation method.
-
-**2021-03-18:** ET: Legacy 2.77.1 is here!
-
-* Bump ET: Legacy to version 2.77.1
-
-**2021-03-01:** ET: Legacy 2.77 is here!
-
-* Bump ET: Legacy to version 2.77
-* Change website for .pk3 download to official Splash Damage website.
-* Added a Docker Volume for /etlegacy
-* Moved the launch options from entrypoint to CMD so the user can override them with their own launch options.
-
-**2021-01-17:** Second release.
-
-This is a breaking release that might break your server. Backup all config files before updating and then make a clean install.
-
-* More clean way of starting the server without need for entrypoint.sh.
-
-**2020-09-25:** First release.
+A changelog is provided with each [release](https://github.com/SebDanielsson/docker-etlegacy/releases).
 
 ## Usage
 
