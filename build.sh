@@ -1,6 +1,6 @@
 # Environment variables
-IMAGE_VERSION='2.8' # Container version
-ETL_DL_URL='https://www.etlegacy.com/download/file/396' # etlegacy-v2.80.1-x86_64.tar.gz
+IMAGE_VERSION='2.80.2' # Container version
+ETL_DL_URL='https://www.etlegacy.com/download/file/407' # etlegacy-v2.80.2-x86_64.tar.gz
 
 # Download
 echo "Downloading $ETL_DL_URL"
