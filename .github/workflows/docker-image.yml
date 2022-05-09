@@ -38,17 +38,17 @@ jobs:
           platforms: linux/amd64 #,linux/arm64 # ET: Legacy not generally available for Linux arm64 yet.
           push: true
           tags: |
-            sebdanielsson/etlegacy:latest
-            sebdanielsson/etlegacy:${{ steps.vars.outputs.tag }}
+            ${{ secrets.DOCKERHUB_USERNAME }}/etlegacy:latest
+            ${{ secrets.DOCKERHUB_USERNAME }}/etlegacy:${{ steps.vars.outputs.tag }}
       - 
         name: Synchronize Github description and README.md with Docker Hub
         uses: bemble/sync-readme@v1.0.0
         with:
-          user: sebdanielsson
+          user: ${{ secrets.DOCKERHUB_USERNAME }}
           pass: ${{ secrets.DOCKER_PASS }}
           totp_secret: ${{ secrets.DOCKER_TOTP_SECRET }}
-          slug: sebdanielsson/etlegacy
+          slug: ${{ secrets.DOCKERHUB_USERNAME }}/etlegacy
           readme: README.md
           description: true
-# Test Docker Hub first           ghcr.io/sebdanielsson/etlegacy:latest
-# Test Docker Hub first           ghcr.io/ebdanielsson/etlegacy:${{ steps.vars.outputs.tag }}
+# Test Docker Hub first           ghcr.io/${{ secrets.DOCKERHUB_USERNAME }}/etlegacy:latest
+# Test Docker Hub first           ghcr.io/${{ secrets.DOCKERHUB_USERNAME }}/etlegacy:${{ steps.vars.outputs.tag }}
