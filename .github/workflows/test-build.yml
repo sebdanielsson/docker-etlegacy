@@ -43,7 +43,6 @@ jobs:
         with:
           user: ${{ secrets.DOCKERHUB_USERNAME }}
           pass: ${{ secrets.DOCKER_PASS }}
-          totp_secret: ${{ secrets.DOCKER_TOTP_SECRET }}
           slug: ${{ secrets.DOCKERHUB_USERNAME }}/etlegacy
           readme: README.md
           description: true
