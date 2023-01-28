@@ -1,10 +1,10 @@
-name: ci
+name: ci-test
 
 on:
   pull_request:
 
 jobs:
-  docker:
+  ci-test:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
