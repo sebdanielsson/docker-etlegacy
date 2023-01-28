@@ -5,7 +5,7 @@ on:
     types: [published]
 
 jobs:
-  docker:
+  ci-release:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
