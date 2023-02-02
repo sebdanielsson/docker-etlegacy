@@ -3,6 +3,7 @@ name: ci-release
 on:
   release:
     types: [published]
+  workflow_dispatch:
 
 jobs:
   ci-release:
