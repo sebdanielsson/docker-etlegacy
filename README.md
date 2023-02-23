@@ -66,7 +66,7 @@ mkdir data/nitmod
 ```
 
 ``` sh
-curl http://etmods.net/downloads/nitmod_2.3.4-b4.zip -o nitmod_2.3.4-b4.zip && unzip -d data/nitmod nitmod_2.3.4-b4.zip nitmod_2.3.4_b4.pk3 qagame.mp.x86_64.so && rm nitmod_2.3.4-b4.zip
+curl http://etmods.net/downloads/nitmod_2.3.5.zip -o nitmod_2.3.5.zip && unzip -d data/nitmod nitmod_2.3.5.zip nitmod_2.3.5.pk3 qagame.mp.x86_64.so && rm nitmod_2.3.5.zip
 ```
 
 ### 2. Configure container
