@@ -2,7 +2,7 @@ FROM debian:bullseye-slim AS builder
 
 RUN apt update && apt install -y curl && apt clean && rm -rf /var/lib/apt/lists/*
 
-RUN curl https://www.etlegacy.com/download/file/537 | tar xvz; mv etlegacy-*/ /etlegacy;
+RUN curl https://www.etlegacy.com/download/file/553 | tar xvz; mv etlegacy-*/ /etlegacy;
 
 FROM debian:bullseye-slim
 
