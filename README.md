@@ -28,8 +28,11 @@ Documentation for some of the commands are available at the projects [wiki](http
 
 ### Sample config and pak-files
 
-1. Download three pak-files that's required to run ET: Legacy. Put them in ./data/etmain. If standing in the same folder as your compose.yaml, run this one-liner: `curl -O --output-dir ./data/etmain "https://mirror.etlegacy.com/etmain/pak[0-2].pk3"`
-2. Download etl_server.cfg and mapvotecycle.cfg to ./data/etmain and make the changes that you want before starting the container.
+1. Clone the repo: `git clone https://github.com/sebdanielsson/docker-etlegacy.git`
+2. Move to repo: `cd docker-etlegacy`
+3. Download game data packs: `curl -O --output-dir ./data/etmain "https://mirror.etlegacy.com/etmain/pak[0-2].pk3"`
+4. Configure `etl_server.cfg` and `mapvotecycle.cfg` in `./data/etmain` before starting the server.
+5. Start the container.
 
 ### docker run
 
@@ -89,7 +92,7 @@ Add nitmod.cfg ***(Required)***, levels.db ***(Recommended)***, commands.db, vot
 
 Some documentation can be found on these websites:
 
-* [N!tmod - Installation (Unofficial)](https://nitmod-docusaurus.vercel.app/docs/installation)
+* [N!tmod - Installation (Unofficial)](https://sebbo.io/nitmod/docs/installation)
 * [ETMods.net - Installation Tutorial (Official)](http://etmods.net/nitmod_install.php)
 
 ## Donate
