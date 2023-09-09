@@ -1,22 +1,31 @@
-FROM debian:bullseye-slim AS builder
+FROM debian:bookworm-slim AS builder
 
 RUN apt update && apt install -y curl && apt clean && rm -rf /var/lib/apt/lists/*
 
-RUN curl https://www.etlegacy.com/download/file/553 | tar xvz; mv etlegacy-*/ /etlegacy;
+WORKDIR /
 
-FROM debian:bookworm-20230725-slim
+ARG TARGETPLATFORM
 
-LABEL maintainer "Sebastian Danielsson <sebastian.danielsson@protonmail.com>"
+RUN case "$TARGETPLATFORM" in \
+    ('linux/amd64') URL="https://www.etlegacy.com/download/file/553" ;; \
+    ('linux/arm64') URL="https://www.etlegacy.com/download/file/563" ;; \
+    (*) echo "Unsupported platform $TARGETPLATFORM" && exit 1 ;; \
+    esac && \
+    curl $URL | tar xz && mv etlegacy-* etlegacy && if [ -f etlegacy/etlded.* ]; then mv etlegacy/etlded.* etlegacy/etlded; fi
 
-EXPOSE 27960/UDP
+FROM debian:bookworm-slim
+
+LABEL maintainer "Sebastian Danielsson <sebastian.danielsson@proton.me>"
 
 RUN groupadd -r etlegacy && useradd -g etlegacy etlegacy
 
-COPY --chown=etlegacy --from=builder /etlegacy /etlegacy
-
-USER etlegacy
+COPY --from=builder --chown=etlegacy:etlegacy  /etlegacy /etlegacy
 
 WORKDIR /etlegacy
 
-ENTRYPOINT ["./etlded.x86_64"]
+EXPOSE 27960/UDP
+
+USER etlegacy
+
+ENTRYPOINT ["./etlded"]
 CMD ["+set", "fs_game", "legacy", "+set", "fs_homepath", "etmain", "+set", "g_protect", "1", "+exec", "etl_server.cfg"]
