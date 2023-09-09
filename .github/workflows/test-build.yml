@@ -33,7 +33,7 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           context: .
-          platforms: linux/amd64
+          platforms: linux/amd64, linux/arm64
           push: true
           tags: |
             ${{ secrets.DOCKERHUB_USERNAME }}/etlegacy:${{ github.event.pull_request.head.sha }}
