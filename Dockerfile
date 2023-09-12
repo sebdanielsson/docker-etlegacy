@@ -2,7 +2,7 @@ FROM debian:bookworm-slim AS builder
 
 RUN apt update && apt install -y curl && apt clean && rm -rf /var/lib/apt/lists/*
 
-WORKDIR /
+WORKDIR /etlegacy
 
 ARG TARGETPLATFORM
 
@@ -11,7 +11,7 @@ RUN case "$TARGETPLATFORM" in \
     ('linux/arm64') URL="https://www.etlegacy.com/download/file/563" ;; \
     (*) echo "Unsupported platform $TARGETPLATFORM" && exit 1 ;; \
     esac && \
-    curl $URL | tar xz -i --strip-components=1 && mv etlegacy-* etlegacy && if [ -f etlegacy/etlded.* ]; then mv etlegacy/etlded.* etlegacy/etlded; fi
+    curl $URL | tar xz -i --strip-components=1 && if [ -f etlded.* ]; then mv etlded.* etlded; fi
 
 FROM debian:bookworm-slim
 
