@@ -29,7 +29,7 @@ jobs:
           username: ${{ github.repository_owner }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Build and push
+      - name: Build and push to Docker Hub
         uses: docker/build-push-action@v5
         with:
           context: .
@@ -37,6 +37,15 @@ jobs:
           push: true
           tags: |
             ${{ secrets.DOCKERHUB_USERNAME }}/etlegacy:${{ github.event.pull_request.head.sha }}
+
+      - name: Build and push to GitHub Container Registry
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          platforms: linux/amd64, linux/arm64
+          push: true
+          tags: |
+            ghcr.io/${{ github.repository_owner }}/etlegacy:${{ github.event.pull_request.head.sha }}
 
       - name: Synchronize Github description and README.md with Docker Hub
         uses: bemble/sync-readme@v1.0.0
