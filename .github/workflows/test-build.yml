@@ -4,9 +4,7 @@ on:
   pull_request:
 
 env:
-  PACKAGE_NAME: etlegacy
-  PR_SHA: ${{ github.event.pull_request.head.sha }}
-  TEST_TAG: sebdanielsson/${{ github.env.PACKAGE_NAME }}:${{ github.env.PR_SHA }}
+  TEST_TAG: sebdanielsson/etlegacy:${{ github.event.pull_request.head.sha }}
 
 jobs:
   ci-test:
