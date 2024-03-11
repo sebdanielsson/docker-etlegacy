@@ -53,7 +53,7 @@ jobs:
           ELAPSED_TIME=0
 
           while [ $ELAPSED_TIME -lt $TIMEOUT ]; do
-            if docker logs $CONTAINER_ID 2>&1 | grep -q "heartbeat"; then
+            if docker logs $CONTAINER_ID 2>&1 | grep -q "snusbeat"; then
               echo "Heartbeat message received."
               exit 0
             fi
