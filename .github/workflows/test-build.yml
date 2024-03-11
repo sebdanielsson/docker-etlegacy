@@ -6,7 +6,7 @@ on:
 env:
   PACKAGE_NAME: etlegacy
   PR_SHA: ${{ github.event.pull_request.head.sha }}
-  TEST_TAG: ${{ github.repository_owner }}/${{ github.env.PACKAGE_NAME }}:${{ github.env.PR_SHA }}
+  TEST_TAG: sebdanielsson/${{ github.env.PACKAGE_NAME }}:${{ github.env.PR_SHA }}
 
 jobs:
   ci-test:
