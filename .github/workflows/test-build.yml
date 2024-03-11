@@ -52,13 +52,15 @@ jobs:
           CHECK_INTERVAL=10  # Check every 10 seconds
           ELAPSED_TIME=0
 
+          echo "Waiting for heartbeat message..."
           while [ $ELAPSED_TIME -lt $TIMEOUT ]; do
-            if docker logs $CONTAINER_ID 2>&1 | grep -q "snusbeat"; then
+            if docker logs $CONTAINER_ID 2>&1 | grep -q "heartbeat"; then
               echo "Heartbeat message received."
               exit 0
             fi
             sleep $CHECK_INTERVAL
             ELAPSED_TIME=$((ELAPSED_TIME + CHECK_INTERVAL))
+            echo "Time elapsed: $ELAPSED_TIME seconds."
           done
 
           echo "Heartbeat message not received within $TIMEOUT seconds."
