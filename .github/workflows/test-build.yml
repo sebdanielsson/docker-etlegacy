@@ -39,6 +39,7 @@ jobs:
       - name: Test Docker image
         run: |
           curl -O --output-dir ./data/etmain "https://mirror.etlegacy.com/etmain/pak[0-2].pk3"
+          chmod -R 777 ./data
           docker run --rm -p 27960:27960/udp -v ./data/etmain:/etlegacy/etmain ${{ env.TEST_TAG }}
 
       - name: Build and push to Docker Hub
