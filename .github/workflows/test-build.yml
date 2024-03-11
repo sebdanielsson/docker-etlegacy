@@ -3,15 +3,19 @@ name: ci-test
 on:
   pull_request:
 
+env:
+  TEST_TAG: sebdanielsson/etlegacy:${{ github.event.pull_request.head.sha }}
+
 jobs:
   ci-test:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-
-      - name: Set up QEMU
-        uses: docker/setup-qemu-action@v3
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
@@ -26,23 +30,60 @@ jobs:
         uses: docker/login-action@v3
         with:
           registry: ghcr.io
-          username: ${{ github.repository_owner }}
+          username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Build and push
+      - name: Build and export to Docker
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          load: true
+          tags: ${{ env.TEST_TAG }}
+
+      - name: Test Docker image  
+        run: |
+          # Download the pak files
+          curl -O --output-dir ./data/etmain "https://mirror.etlegacy.com/etmain/pak[0-2].pk3"
+
+          # Make the data directory writable
+          chmod -R 777 ./data
+
+          # Start the container in detached mode
+          CONTAINER_ID=$(docker run -d --rm -p 27960:27960/udp -v "${PWD}/data/etmain:/etlegacy/etmain" ${{ env.TEST_TAG }})
+
+          # Wait for 'heartbeat' or timeout
+          TIMEOUT=300  # 5 minutes in seconds
+          CHECK_INTERVAL=10  # Check every 10 seconds
+          ELAPSED_TIME=0
+
+          echo "Waiting for heartbeat message..."
+          while [ $ELAPSED_TIME -lt $TIMEOUT ]; do
+            if docker logs $CONTAINER_ID 2>&1 | grep -q "heartbeat"; then
+              echo "Heartbeat message received."
+              exit 0
+            fi
+            sleep $CHECK_INTERVAL
+            ELAPSED_TIME=$((ELAPSED_TIME + CHECK_INTERVAL))
+            echo "Time elapsed: $ELAPSED_TIME seconds."
+          done
+
+          echo "Heartbeat message not received within $TIMEOUT seconds."
+          exit 1
+
+      - name: Build and push to Docker Hub
         uses: docker/build-push-action@v5
         with:
           context: .
           platforms: linux/amd64, linux/arm64
           push: true
           tags: |
-            ${{ secrets.DOCKERHUB_USERNAME }}/etlegacy:${{ github.event.pull_request.head.sha }}
+            ${{ env.TEST_TAG }}
 
-      - name: Synchronize Github description and README.md with Docker Hub
-        uses: bemble/sync-readme@v1.0.0
+      - name: Build and push to GitHub Container Registry
+        uses: docker/build-push-action@v5
         with:
-          user: ${{ secrets.DOCKERHUB_USERNAME }}
-          pass: ${{ secrets.DOCKER_PASS }}
-          slug: ${{ secrets.DOCKERHUB_USERNAME }}/etlegacy
-          readme: README.md
-          description: true
+          context: .
+          platforms: linux/amd64, linux/arm64
+          push: true
+          tags: |
+            ${{ env.TEST_TAG }}
