@@ -70,7 +70,7 @@ jobs:
           echo "Heartbeat message not received within $TIMEOUT seconds."
           exit 1
 
-      - name: Build and push to Docker Hub
+      - name: Build and push
         uses: docker/build-push-action@v5
         with:
           context: .
@@ -78,12 +78,5 @@ jobs:
           push: true
           tags: |
             ${{ env.TEST_TAG }}
+            ghcr.io/${{ env.TEST_TAG }}
 
-      - name: Build and push to GitHub Container Registry
-        uses: docker/build-push-action@v5
-        with:
-          context: .
-          platforms: linux/amd64, linux/arm64
-          push: true
-          tags: |
-            ${{ env.TEST_TAG }}
