@@ -3,15 +3,17 @@ name: ci-test
 on:
   pull_request:
 
+env:
+  PACKAGE_NAME: etlegacy
+  PR_SHA: ${{ github.event.pull_request.head.sha }}
+  TEST_TAG: ${{ github.repository_owner }}/${{ github.env.PACKAGE_NAME }}:${{ github.env.PR_SHA }}
+
 jobs:
   ci-test:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-
-      - name: Set up QEMU
-        uses: docker/setup-qemu-action@v3
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
@@ -29,6 +31,17 @@ jobs:
           username: ${{ github.repository_owner }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Build and export to Docker
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          load: true
+          tags: ${{ env.TEST_TAG }}
+
+      - name: Test Docker image
+        run: |
+          docker run --rm -p 27960:27960/udp -v ./data/etmain:/etlegacy/etmain ${{ env.TEST_TAG }}
+
       - name: Build and push to Docker Hub
         uses: docker/build-push-action@v5
         with:
@@ -36,7 +49,7 @@ jobs:
           platforms: linux/amd64, linux/arm64
           push: true
           tags: |
-            ${{ secrets.DOCKERHUB_USERNAME }}/etlegacy:${{ github.event.pull_request.head.sha }}
+            ${{ env.TEST_TAG }}
 
       - name: Build and push to GitHub Container Registry
         uses: docker/build-push-action@v5
@@ -45,13 +58,4 @@ jobs:
           platforms: linux/amd64, linux/arm64
           push: true
           tags: |
-            ghcr.io/${{ github.repository_owner }}/etlegacy:${{ github.event.pull_request.head.sha }}
-
-      - name: Synchronize Github description and README.md with Docker Hub
-        uses: bemble/sync-readme@v1.0.0
-        with:
-          user: ${{ secrets.DOCKERHUB_USERNAME }}
-          pass: ${{ secrets.DOCKER_PASS }}
-          slug: ${{ secrets.DOCKERHUB_USERNAME }}/etlegacy
-          readme: README.md
-          description: true
+            ${{ env.TEST_TAG }}
