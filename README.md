@@ -92,7 +92,7 @@ Add nitmod.cfg ***(Required)***, levels.db ***(Recommended)***, commands.db, vot
 
 Some documentation can be found on these websites:
 
-* [N!tmod - Installation (Unofficial)](https://sebbo.io/nitmod/docs/installation)
+* [N!tmod - Installation (Unofficial)](https://sebdanielsson.github.io/nitmod/docs/installation)
 * [ETMods.net - Installation Tutorial (Official)](http://etmods.net/nitmod_install.php)
 
 ## Donate
