@@ -7,8 +7,8 @@ WORKDIR /etlegacy
 ARG TARGETPLATFORM
 
 RUN case "$TARGETPLATFORM" in \
-    ('linux/amd64') URL="https://www.etlegacy.com/download/file/685" ;; \
-    ('linux/arm64') URL="https://www.etlegacy.com/download/file/697" ;; \
+    ('linux/amd64') URL="https://www.etlegacy.com/download/file/700" ;; \
+    ('linux/arm64') URL="https://www.etlegacy.com/download/file/710" ;; \
     (*) echo "Unsupported platform $TARGETPLATFORM" && exit 1 ;; \
     esac && \
     curl $URL | tar xz -i --strip-components=1 && if [ -f etlded.* ]; then mv etlded.* etlded; fi
