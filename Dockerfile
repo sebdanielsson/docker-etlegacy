@@ -1,4 +1,4 @@
-FROM debian:bookworm-slim AS builder
+FROM debian:trixie-slim AS builder
 
 RUN apt update && apt install -y curl && apt clean && rm -rf /var/lib/apt/lists/*
 
@@ -13,7 +13,7 @@ RUN case "$TARGETPLATFORM" in \
     esac && \
     curl $URL | tar xz -i --strip-components=1 && if [ -f etlded.* ]; then mv etlded.* etlded; fi
 
-FROM debian:bookworm-slim
+FROM debian:trixie-slim
 
 LABEL maintainer "Sebastian Danielsson <sebastian.danielsson@proton.me>"
 
