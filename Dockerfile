@@ -7,11 +7,15 @@ WORKDIR /etlegacy
 ARG TARGETPLATFORM
 
 RUN case "$TARGETPLATFORM" in \
-    ('linux/amd64') URL="https://www.etlegacy.com/download/file/728" ;; \
-    ('linux/arm64') URL="https://www.etlegacy.com/download/file/740" ;; \
+    ('linux/amd64') URL="https://www.etlegacy.com/download/file/728"; MD5="9e02a9aa3654877d3e58339e071128cf" ;; \
+    ('linux/arm64') URL="https://www.etlegacy.com/download/file/740"; MD5="50be387df453d472e4d2c71d4c8365e5" ;; \
     (*) echo "Unsupported platform $TARGETPLATFORM" && exit 1 ;; \
     esac && \
-    curl $URL | tar xz -i --strip-components=1 && if [ -f etlded.* ]; then mv etlded.* etlded; fi
+    curl -fsSL "$URL" -o etlegacy.tar.gz && \
+    echo "$MD5  etlegacy.tar.gz" | md5sum -c - && \
+    tar xzf etlegacy.tar.gz -i --strip-components=1 && \
+    rm etlegacy.tar.gz && \
+    if [ -f etlded.* ]; then mv etlded.* etlded; fi
 
 FROM debian:trixie-slim
 
