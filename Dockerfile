@@ -19,7 +19,7 @@ RUN case "$TARGETPLATFORM" in \
 
 FROM debian:trixie-slim
 
-LABEL maintainer "Sebastian Danielsson <sebastian.danielsson@proton.me>"
+LABEL maintainer="Sebastian Danielsson <sebastian.danielsson@proton.me>"
 
 RUN groupadd -r etlegacy && useradd -g etlegacy etlegacy
 
@@ -27,7 +27,7 @@ COPY --from=builder --chown=etlegacy:etlegacy /etlegacy /etlegacy
 
 WORKDIR /etlegacy
 
-EXPOSE 27960/UDP
+EXPOSE 27960/udp
 
 USER etlegacy
 
