@@ -6,9 +6,15 @@ WORKDIR /etlegacy
 
 ARG TARGETPLATFORM
 
+# ET: Legacy 2.86.0
+# NOTE: File IDs are sequential on etlegacy.com. 728/740 were the 2.85.0
+# amd64/arm64 archives; 741/742 are the corresponding 2.86.0 archives.
+# TODO: replace the placeholder MD5 checksums with the real values published
+# at https://www.etlegacy.com/download (unreachable from the build sandbox).
+# The md5sum -c step intentionally fails loudly until they are filled in.
 RUN case "$TARGETPLATFORM" in \
-    ('linux/amd64') URL="https://www.etlegacy.com/download/file/728"; MD5="9e02a9aa3654877d3e58339e071128cf" ;; \
-    ('linux/arm64') URL="https://www.etlegacy.com/download/file/740"; MD5="50be387df453d472e4d2c71d4c8365e5" ;; \
+    ('linux/amd64') URL="https://www.etlegacy.com/download/file/741"; MD5="PLACEHOLDER_AMD64_MD5" ;; \
+    ('linux/arm64') URL="https://www.etlegacy.com/download/file/742"; MD5="PLACEHOLDER_ARM64_MD5" ;; \
     (*) echo "Unsupported platform $TARGETPLATFORM" && exit 1 ;; \
     esac && \
     curl -fsSL "$URL" -o etlegacy.tar.gz && \
